@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { ServiceCheckoutModal } from "@/components/service-checkout-modal"
 
 const levels = [
   {
@@ -44,6 +45,11 @@ const levels = [
 
 export function Levels() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [selectedService, setSelectedService] = useState<{
+    name: string
+    price: string
+    description: string
+  } | null>(null)
 
   return (
     <section id="levels" className="relative py-24 md:py-32">
@@ -120,6 +126,16 @@ export function Levels() {
               <div className="mt-auto pt-4">
                 <button
                   type="button"
+                  onClick={() => {
+                    // Only open modal for services (not the $50 Mixtape Cover Express)
+                    if (level.name !== "Mixtape Cover Express") {
+                      setSelectedService({
+                        name: level.name,
+                        price: level.price,
+                        description: level.description,
+                      })
+                    }
+                  }}
                   className={`flex min-h-[48px] w-full items-center justify-center font-display text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
                     level.elite
                       ? "border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
@@ -133,6 +149,17 @@ export function Levels() {
           ))}
         </div>
       </div>
+
+      {/* Service Checkout Modal */}
+      {selectedService && (
+        <ServiceCheckoutModal
+          isOpen={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          serviceName={selectedService.name}
+          servicePrice={selectedService.price}
+          serviceDescription={selectedService.description}
+        />
+      )}
     </section>
   )
 }
