@@ -66,6 +66,17 @@ const products = [
     description: "The scent of power and ambition bottled. A luxury streetwear fragrance that merges graffiti-inspired aesthetics with premium perfumery. Dark gradient glass (black to red) symbolizes the relentless late-night grind. Cityscape artwork wraps the bottle, capturing urban authenticity and hustle mentality. Delivered in a signature Internet Kartel presentation box with white satin lining. This isn't just a scent—it's a lifestyle statement.",
     isPremium: true,
   },
+  {
+    name: "Kingpin War With The Feds Jacket",
+    category: "Kingpin Exclusive",
+    price: "$500",
+    image: "/images/kingpin-jacket-worn.jpeg",
+    images: ["/images/kingpin-jacket-worn.jpeg", "/images/kingpin-jacket-box.jpeg"],
+    tagline: "Only 5 Will Ever Exist. This Is Not Fashion. This Is Legacy.",
+    description: "A collector-level statement piece crafted through an intensive four-week process. Premium vegan leather with royal purple suede interior. Each jacket is made strictly to order\u2014no two carry the same energy. Ownership is intentionally restricted to five jackets worldwide, after which the design is permanently discontinued. This is a symbol of rank, access, and legacy for those who understand power moves and rare acquisitions.",
+    isPremium: true,
+    isKingpinExclusive: true,
+  },
 
 ]
 
@@ -240,14 +251,27 @@ export function Marketplace() {
                     {product.description}
                   </p>
                 )}
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
-                  {product.isPremium && (
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-                      Limited
-                    </span>
-                  )}
-                </div>
+                {product.isKingpinExclusive ? (
+                  <div className="mt-2 flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      <span className="font-display text-lg font-bold text-muted-foreground line-through decoration-red-500 decoration-2">
+                        {product.price}
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-yellow-400">
+                      You must purchase the Kingpin Private Membership in order to get this jacket
+                    </p>
+                  </div>
+                ) : (
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
+                    {product.isPremium && (
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                        Limited
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
