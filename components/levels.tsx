@@ -52,7 +52,17 @@ export function Levels() {
   } | null>(null)
 
   return (
-    <section id="levels" className="relative py-24 md:py-32">
+    <section id="levels" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/services-bg.png"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/85" />
+      </div>
+
       <div className="mx-auto max-w-6xl px-6">
         {/* Section header */}
         <div className="mb-16 flex flex-col items-center gap-4 text-center">
@@ -124,26 +134,27 @@ export function Levels() {
 
               {/* CTA */}
               <div className="mt-auto pt-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    // Only open modal for services (not the $50 Mixtape Cover Express)
-                    if (level.name !== "Mixtape Cover Express") {
+                {level.elite ? (
+                  <button
+                    type="button"
+                    onClick={() => {
                       setSelectedService({
                         name: level.name,
                         price: level.price,
                         description: level.description,
                       })
-                    }
-                  }}
-                  className={`flex min-h-[48px] w-full items-center justify-center font-display text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
-                    level.elite
-                      ? "border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
-                      : "border border-border bg-secondary text-foreground hover:border-muted-foreground/40 hover:bg-secondary/80"
-                  }`}
-                >
-                  {level.elite ? "Request Access" : "Select Level"}
-                </button>
+                    }}
+                    className="flex min-h-[48px] w-full items-center justify-center font-display text-xs font-semibold uppercase tracking-[0.2em] transition-all border border-primary bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Request Access
+                  </button>
+                ) : (
+                  <div
+                    className="flex min-h-[48px] w-full items-center justify-center font-display text-xs font-semibold uppercase tracking-[0.2em] border border-yellow-500/40 bg-yellow-500/10 text-yellow-400 cursor-default select-none"
+                  >
+                    Coming Soon
+                  </div>
+                )}
               </div>
             </div>
           ))}

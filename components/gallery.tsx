@@ -209,6 +209,39 @@ export function Gallery() {
                   />
                 </div>
               </div>
+
+              {/* Image 7 - IK Street */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-[3/4]">
+                  <img
+                    src="/images/gallery-ik-street.jpeg"
+                    alt="Internet Kartel street culture - puffer jacket in foggy city"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 8 - Bombay Hustle Detained */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-video">
+                  <img
+                    src="/images/gallery-bh-detained.jpeg"
+                    alt="Bombay Hustle - cinematic scene"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 9 - Bombay Hustle Pendant */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-video">
+                  <img
+                    src="/images/gallery-bh-pendant.jpeg"
+                    alt="Bombay Hustle skull and snake pendant close-up"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

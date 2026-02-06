@@ -18,6 +18,7 @@ const featuredProduct = {
     "Limited production, elite access only",
   ],
   images: [
+    "/images/services-bg.png",
     "/images/ik-hoodie-portrait.jpeg",
     "/images/ik-hoodie-flatlay.jpeg",
     "/images/ik-hoodie-front.jpeg",
@@ -51,7 +52,7 @@ const products = [
     category: "Custom Limited Edition",
     price: "$300",
     image: "/images/30-days-jacket-box.jpeg",
-    images: ["/images/30-days-jacket-box.jpeg", "/images/30-days-jacket-front.png", "/images/30-days-jacket-back.png"],
+    images: ["/images/30-days-jacket-box.jpeg", "/images/30-days-jacket-front.png", "/images/30-days-jacket-back.png", "/images/30-days-jacket-back-detail.png"],
     tagline: "Eviction Notice: When You Were Really Living in the Trenches",
     description: "An ode to survival. A masterpiece born from struggle. This hand-crafted premium leather varsity jacket immortalizes the 30-day eviction notice—a symbol of resilience when you were really living in the trenches. Black and royal blue genuine leather construction with hand-embroidered gold lettering on the chest, featuring an artistically rendered eviction notice collage on the back. Each jacket tells a story of turning hardship into heritage. Presented in an exclusive Internet Kartel luxury box with tissue wrapping.",
     isPremium: true,
@@ -66,11 +67,17 @@ const products = [
     isPremium: true,
   },
   {
-    name: "IK Street Crop Top",
-    category: "Internet Kartel",
-    price: "$45",
-    image: "/images/acf62aef-7e71-47fe-9d32.jpeg",
+    name: "Kingpin War With The Feds Jacket",
+    category: "Kingpin Exclusive",
+    price: "$500",
+    image: "/images/kingpin-jacket-worn.jpeg",
+    images: ["/images/kingpin-jacket-worn.jpeg", "/images/kingpin-jacket-box.jpeg"],
+    tagline: "Only 5 Will Ever Exist. This Is Not Fashion. This Is Legacy.",
+    description: "A collector-level statement piece crafted through an intensive four-week process. Premium vegan leather with royal purple suede interior. Each jacket is made strictly to order\u2014no two carry the same energy. Ownership is intentionally restricted to five jackets worldwide, after which the design is permanently discontinued. This is a symbol of rank, access, and legacy for those who understand power moves and rare acquisitions.",
+    isPremium: true,
+    isKingpinExclusive: true,
   },
+
 ]
 
 export function Marketplace() {
@@ -244,14 +251,27 @@ export function Marketplace() {
                     {product.description}
                   </p>
                 )}
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
-                  {product.isPremium && (
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-                      Limited
-                    </span>
-                  )}
-                </div>
+                {product.isKingpinExclusive ? (
+                  <div className="mt-2 flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      <span className="font-display text-lg font-bold text-muted-foreground line-through decoration-red-500 decoration-2">
+                        {product.price}
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-yellow-400">
+                      You must purchase the Kingpin Private Membership in order to get this jacket
+                    </p>
+                  </div>
+                ) : (
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
+                    {product.isPremium && (
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                        Limited
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
