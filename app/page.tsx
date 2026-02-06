@@ -1,17 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, lazy, Suspense } from "react"
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
-import { Levels } from "@/components/levels"
 import { Marketplace } from "@/components/marketplace"
 import { Founder } from "@/components/founder"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
-import { Vault } from "@/components/vault"
-import { Gallery } from "@/components/gallery"
 import { AgeGate } from "@/components/age-gate"
+
+// Lazy load components that aren't immediately visible
+const Levels = lazy(() => import("@/components/levels").then(m => ({ default: m.Levels })))
+const Gallery = lazy(() => import("@/components/gallery").then(m => ({ default: m.Gallery })))
+const Vault = lazy(() => import("@/components/vault").then(m => ({ default: m.Vault })))
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("home")
@@ -28,7 +30,11 @@ export default function Page() {
   }, [])
 
   if (isLoading) {
-    return null
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+      </div>
+    )
   }
 
   if (!isVerified) {
@@ -57,11 +63,17 @@ export default function Page() {
           <FinalCTA />
         </>
       ) : activeTab === "services" ? (
-        <Levels />
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
+          <Levels />
+        </Suspense>
       ) : activeTab === "gallery" ? (
-        <Gallery />
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
+          <Gallery />
+        </Suspense>
       ) : (
-        <Vault />
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
+          <Vault />
+        </Suspense>
       )}
 
       <Footer />
