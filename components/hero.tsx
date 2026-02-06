@@ -15,7 +15,7 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/marketplace-hero.jpeg"
+          src="/images/hero-main.jpeg"
           alt=""
           className="h-full w-full object-cover object-center"
         />
