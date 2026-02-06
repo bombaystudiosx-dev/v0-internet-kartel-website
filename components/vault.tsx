@@ -11,14 +11,7 @@ const vaultItems = [
     image: "/images/043e4302-8193-46a3-b31e.jpeg",
     tags: ["Limited", "Custom", "1 of 1"],
   },
-  {
-    title: "Street Operations",
-    category: "Merch",
-    description:
-      "Internet Kartel crop top in the wild. Puffer jacket. Gold chain. City smoke. This is what moving different looks like.",
-    image: "/images/acf62aef-7e71-47fe-9d32.jpeg",
-    tags: ["Streetwear", "Culture"],
-  },
+
   {
     title: "The Inner Circle",
     category: "Music",
