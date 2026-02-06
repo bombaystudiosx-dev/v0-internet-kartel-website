@@ -28,6 +28,24 @@ const featuredProduct = {
 
 const products = [
   {
+    name: "Full Court Press - Internet Kartel Jeans",
+    category: "Limited Archive Series",
+    price: "$125",
+    image: "/images/full-court-press-box.jpeg",
+    tagline: "State of Emergency: Newspaper Asset Fade Edition",
+    description: "Born from chaos, refined through artistry. These aren't just jeans—they're wearable journalism. Hand-crafted premium denim featuring our signature newspaper asset fade gradient, each pair uniquely distressed with archival print overlays and flame-kissed orange accents. Reinforced with industrial-grade stretch technology for uncompromising durability and all-day comfort. Machine washable without fade deterioration. Delivered in a signature Internet Kartel presentation box. Belt sold separately. This is archival streetwear. This is Full Court Press.",
+    isPremium: true,
+    features: [
+      "Signature newspaper asset fade gradient",
+      "Hand-applied distressing & archival print overlay",
+      "Military-grade stretch denim construction",
+      "Fade-resistant wash technology",
+      "Gold 'Full Court Press' embroidered lettering",
+      "Numbered limited edition run",
+      "Luxury IK box presentation"
+    ]
+  },
+  {
     name: "30 Days Straight - Leather Varsity Jacket",
     category: "Custom Limited Edition",
     price: "$300",
