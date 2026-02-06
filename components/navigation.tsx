@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 const tabs = [
   { label: "Internet Kartel", id: "home" },
+  { label: "Gallery", id: "gallery" },
   { label: "Cali_Bombay Vault", id: "vault" },
 ]
 

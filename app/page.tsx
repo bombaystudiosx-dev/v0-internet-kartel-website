@@ -10,6 +10,7 @@ import { Founder } from "@/components/founder"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
 import { Vault } from "@/components/vault"
+import { Gallery } from "@/components/gallery"
 import { AgeGate } from "@/components/age-gate"
 
 export default function Page() {
@@ -59,6 +60,8 @@ export default function Page() {
           <Founder />
           <FinalCTA />
         </>
+      ) : activeTab === "gallery" ? (
+        <Gallery />
       ) : (
         <Vault />
       )}
