@@ -147,7 +147,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/ik-map-design.jpeg"
+                    src="/images/790f563c-ac6e-4eb4-b240.jpeg"
                     alt="IK Map Design - Street layout with Internet Kartel branding"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -158,7 +158,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/hunna-dolla-sips.jpeg"
+                    src="/images/6dca1a6c-3f7f-4595-9d7d.jpeg"
                     alt="Hunna Dolla Sips - Creative beverage can design"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -169,7 +169,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/luckylicks.jpeg"
+                    src="/images/395f0347-6d85-49a1-834d.jpeg"
                     alt="Lucky Licks - Surreal ice cream design"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -180,7 +180,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/bombay-hustle.jpeg"
+                    src="/images/50892217-cde4-43be-af18.jpeg"
                     alt="Bombay Hustle Company - Dice logo design"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -191,7 +191,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/ik-neon-logo.jpeg"
+                    src="/images/bd85773b-f8e9-447c-8be4.jpeg"
                     alt="Internet Kartel Neon Logo - Brand identity"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -202,7 +202,7 @@ export function Gallery() {
               <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
                 <div className="aspect-square">
                   <img
-                    src="/images/gallery/stop-snitching.jpeg"
+                    src="/images/ba68826b-7b5a-460b-8cce.jpeg"
                     alt="Stop Snitching - Las Vegas Police design"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
