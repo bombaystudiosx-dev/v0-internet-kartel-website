@@ -4,14 +4,6 @@ import { useState } from "react"
 
 const vaultItems = [
   {
-    title: "Kartel Custom AF1s",
-    category: "Merch",
-    description:
-      "Hand-painted Internet Kartel Air Force 1s. Purple Reign and Mexican Flag editions. One-of-one pieces built for the culture.",
-    image: "/images/043e4302-8193-46a3-b31e.jpeg",
-    tags: ["Limited", "Custom", "1 of 1"],
-  },
-  {
     title: "Street Operations",
     category: "Merch",
     description:
@@ -23,9 +15,9 @@ const vaultItems = [
     title: "The Inner Circle",
     category: "Music",
     description:
-      "Darkness. Chains. Flames. The original crew photo that started a movement. Loyalty over everything.",
-    image: "/images/ee6d2e42-b9ef-4824-ae11.jpeg",
-    tags: ["OG", "Archive"],
+      "Bombay Hustle Internet Kartel. CD cases stacked in the trunk of the Cutlass alongside the cologne, 30 Days Straight jacket, and Hunna Dolla Sips. The full collection. The whole movement in one frame.",
+    image: "/images/bombay-hustle-trunk.png",
+    tags: ["Album", "Collection"],
   },
 ]
 
