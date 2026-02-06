@@ -28,10 +28,13 @@ const featuredProduct = {
 
 const products = [
   {
-    name: "Internet Kartel AF1 - Purple Reign",
-    category: "Internet Kartel",
-    price: "$280",
-    image: "/images/043e4302-8193-46a3-b31e.jpeg",
+    name: "30 Days Straight - Leather Varsity Jacket",
+    category: "Custom Limited Edition",
+    price: "$300",
+    image: "/images/30-days-jacket-box.jpeg",
+    tagline: "Eviction Notice: When You Were Really Living in the Trenches",
+    description: "An ode to survival. A masterpiece born from struggle. This hand-crafted premium leather varsity jacket immortalizes the 30-day eviction notice—a symbol of resilience when you were really living in the trenches. Black and royal blue genuine leather construction with hand-embroidered gold lettering on the chest, featuring an artistically rendered eviction notice collage on the back. Each jacket tells a story of turning hardship into heritage. Presented in an exclusive Internet Kartel luxury box with tissue wrapping.",
+    isPremium: true,
   },
   {
     name: "IK Street Crop Top",
@@ -159,7 +162,11 @@ export function Marketplace() {
           {products.map((product) => (
             <div
               key={product.name}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-all hover:border-muted-foreground/30"
+              className={`group relative flex flex-col overflow-hidden border transition-all ${
+                product.isPremium
+                  ? "border-primary/50 bg-card shadow-lg shadow-primary/10 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+                  : "border-border bg-card hover:border-muted-foreground/30"
+              }`}
             >
               {/* Image */}
               <div className="relative aspect-square overflow-hidden">
@@ -169,15 +176,38 @@ export function Marketplace() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <span className="absolute left-3 top-3 bg-secondary/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-sm">
+                <span
+                  className={`absolute left-3 top-3 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] backdrop-blur-sm ${
+                    product.isPremium
+                      ? "bg-primary/90 text-primary-foreground"
+                      : "bg-secondary/90 text-muted-foreground"
+                  }`}
+                >
                   {product.category}
                 </span>
               </div>
 
               {/* Info */}
-              <div className="flex flex-col gap-1 p-4">
-                <h3 className="text-sm font-semibold text-foreground">{product.name}</h3>
-                <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
+              <div className={`flex flex-col gap-2 ${product.isPremium ? "p-6" : "p-4"}`}>
+                <h3 className="text-sm font-semibold text-foreground text-balance">{product.name}</h3>
+                {product.tagline && (
+                  <p className="text-xs italic leading-relaxed text-muted-foreground">
+                    {product.tagline}
+                  </p>
+                )}
+                {product.description && (
+                  <p className="text-xs leading-relaxed text-muted-foreground/80 line-clamp-3">
+                    {product.description}
+                  </p>
+                )}
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="font-display text-lg font-bold text-foreground">{product.price}</span>
+                  {product.isPremium && (
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                      Limited
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           ))}
