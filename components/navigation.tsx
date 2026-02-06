@@ -4,13 +4,13 @@ import { useEffect, useState } from "react"
 
 const tabs = [
   { label: "Internet Kartel", id: "home" },
+  { label: "Services", id: "services" },
   { label: "Gallery", id: "gallery" },
   { label: "Cali_Bombay Vault", id: "vault" },
 ]
 
 const homeLinks = [
   { label: "About", href: "#about" },
-  { label: "Levels", href: "#levels" },
   { label: "Marketplace", href: "#marketplace" },
   { label: "Founder", href: "#founder" },
 ]

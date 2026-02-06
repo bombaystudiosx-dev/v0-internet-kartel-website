@@ -49,10 +49,6 @@ export default function Page() {
           <div className="mx-auto max-w-6xl px-6">
             <div className="h-px w-full bg-border" />
           </div>
-          <Levels />
-          <div className="mx-auto max-w-6xl px-6">
-            <div className="h-px w-full bg-border" />
-          </div>
           <Marketplace />
           <div className="mx-auto max-w-6xl px-6">
             <div className="h-px w-full bg-border" />
@@ -60,6 +56,8 @@ export default function Page() {
           <Founder />
           <FinalCTA />
         </>
+      ) : activeTab === "services" ? (
+        <Levels />
       ) : activeTab === "gallery" ? (
         <Gallery />
       ) : (
