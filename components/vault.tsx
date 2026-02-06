@@ -17,7 +17,7 @@ const vaultItems = [
     category: "Music",
     description:
       "Darkness. Chains. Flames. The original crew photo that started a movement. Loyalty over everything.",
-    image: "/images/ee6d2e42-b9ef-4824-ae11.jpeg",
+    image: "/images/dope-sellers.jpeg",
     tags: ["OG", "Archive"],
   },
 ]
