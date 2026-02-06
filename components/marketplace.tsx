@@ -32,6 +32,7 @@ const products = [
     category: "Limited Archive Series",
     price: "$125",
     image: "/images/full-court-press-box.jpeg",
+    images: ["/images/full-court-press-box.jpeg", "/images/full-court-press-styled.jpeg"],
     tagline: "State of Emergency: Newspaper Asset Fade Edition",
     description: "Born from chaos, refined through artistry. These aren't just jeans—they're wearable journalism. Hand-crafted premium denim featuring our signature newspaper asset fade gradient, each pair uniquely distressed with archival print overlays and flame-kissed orange accents. Reinforced with industrial-grade stretch technology for uncompromising durability and all-day comfort. Machine washable without fade deterioration. Delivered in a signature Internet Kartel presentation box. Belt sold separately. This is archival streetwear. This is Full Court Press.",
     isPremium: true,
@@ -73,6 +74,7 @@ const products = [
 
 export function Marketplace() {
   const [activeImage, setActiveImage] = useState(0)
+  const [productImageIndex, setProductImageIndex] = useState<Record<string, number>>({})
 
   return (
     <section id="marketplace" className="relative py-24 md:py-32">
@@ -192,18 +194,11 @@ export function Marketplace() {
               {/* Image */}
               <div className="relative aspect-square overflow-hidden">
                 <img
-                  src={product.image || "/placeholder.svg"}
+                  src={(product.images ? product.images[productImageIndex[product.name] || 0] : product.image) || "/placeholder.svg"}
                   alt={product.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                {product.isSoldOut && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-sm">
-                    <span className="bg-destructive px-4 py-2 font-display text-sm font-bold uppercase tracking-[0.2em] text-destructive-foreground">
-                      Sold Out
-                    </span>
-                  </div>
-                )}
                 <span
                   className={`absolute left-3 top-3 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] backdrop-blur-sm ${
                     product.isPremium
@@ -213,6 +208,26 @@ export function Marketplace() {
                 >
                   {product.category}
                 </span>
+                {product.images && product.images.length > 1 && (
+                  <div className="absolute bottom-3 right-3 flex gap-1.5">
+                    {product.images.map((img, i) => (
+                      <button
+                        key={img}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setProductImageIndex(prev => ({ ...prev, [product.name]: i }))
+                        }}
+                        className={`h-2 w-2 rounded-full transition-all ${
+                          (productImageIndex[product.name] || 0) === i
+                            ? "bg-primary scale-125"
+                            : "bg-foreground/40 hover:bg-foreground/70"
+                        }`}
+                        aria-label={`View image ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Info */}
