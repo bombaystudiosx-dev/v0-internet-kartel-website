@@ -1,23 +1,21 @@
 export function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="flex flex-col items-center gap-12 md:flex-row md:gap-16">
-          {/* Image */}
-          <div className="relative w-full max-w-xs shrink-0 md:max-w-sm">
-            <div className="aspect-[3/4] overflow-hidden">
-              <img
-                src="/images/acf62aef-7e71-47fe-9d32.jpeg"
-                alt="Internet Kartel street culture"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-2 -right-2 h-full w-full border border-primary/20 -z-10" />
-          </div>
+    <section id="about" className="relative py-0 md:py-0">
+      {/* Full-width hero image with fade */}
+      <div className="relative w-full">
+        <img
+          src="/images/ik-sneakers-showcase.jpeg"
+          alt="Internet Kartel sneakers showcase"
+          className="w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+      </div>
 
+      <div className="mx-auto max-w-4xl px-6 -mt-16 relative z-10">
+        <div className="flex flex-col items-center">
           {/* Text */}
-          <div className="flex flex-col gap-6 text-center md:text-left">
-            <div className="flex items-center justify-center gap-3 md:justify-start">
+          <div className="flex flex-col gap-6 text-center">
+            <div className="flex items-center justify-center gap-3">
               <div className="h-px w-8 bg-primary" />
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
                 The Movement
