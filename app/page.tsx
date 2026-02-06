@@ -22,9 +22,14 @@ export default function Page() {
 
   useEffect(() => {
     // Check if user has already been verified
-    const verified = localStorage.getItem("ageVerified")
-    if (verified === "true") {
-      setIsVerified(true)
+    try {
+      const verified = localStorage.getItem("ageVerified")
+      if (verified === "true") {
+        setIsVerified(true)
+      }
+    } catch (error) {
+      // localStorage might not be available in some browsers
+      console.error("Failed to access localStorage:", error)
     }
     setIsLoading(false)
   }, [])

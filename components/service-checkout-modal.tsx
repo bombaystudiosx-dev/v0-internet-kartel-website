@@ -108,7 +108,6 @@ export function ServiceCheckoutModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Form submitted:", { ...formData, logoFile })
     // TODO: Add actual checkout/payment processing here
     alert("Order submitted! We'll be in touch soon.")
     onClose()

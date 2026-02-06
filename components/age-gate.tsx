@@ -50,7 +50,11 @@ export function AgeGate({ onVerified }: AgeGateProps) {
     }
 
     // Store verification in localStorage
-    localStorage.setItem("ageVerified", "true")
+    try {
+      localStorage.setItem("ageVerified", "true")
+    } catch (error) {
+      console.error("Failed to save age verification:", error)
+    }
     onVerified()
   }
 
