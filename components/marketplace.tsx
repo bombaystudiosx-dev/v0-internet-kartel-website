@@ -42,12 +42,6 @@ const products = [
     price: "$45",
     image: "/images/acf62aef-7e71-47fe-9d32.jpeg",
   },
-  {
-    name: "Bombay Command Hoodie",
-    category: "Bombay Hustle",
-    price: "$120",
-    image: "/images/0fd273d7-809c-4567-8e85.jpeg",
-  },
 ]
 
 export function Marketplace() {
