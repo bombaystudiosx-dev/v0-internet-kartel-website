@@ -20,6 +20,7 @@ export function Footer() {
             <a href="#levels" className="text-xs uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground">Levels</a>
             <a href="#marketplace" className="text-xs uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground">Marketplace</a>
             <a href="#founder" className="text-xs uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground">Founder</a>
+            <span className="text-xs uppercase tracking-[0.15em] text-kartel-gold/60">Vault</span>
           </div>
 
           {/* Divider */}

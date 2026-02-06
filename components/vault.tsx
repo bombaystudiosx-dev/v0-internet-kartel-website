@@ -1,0 +1,243 @@
+"use client"
+
+import { useState } from "react"
+
+const vaultItems = [
+  {
+    title: "Kartel Custom AF1s",
+    category: "Footwear",
+    description:
+      "Hand-painted Internet Kartel Air Force 1s. Purple Reign and Mexican Flag editions. One-of-one pieces built for the culture.",
+    image: "/images/043e4302-8193-46a3-b31e.jpeg",
+    tags: ["Limited", "Custom", "1 of 1"],
+  },
+  {
+    title: "Street Operations",
+    category: "Lookbook",
+    description:
+      "Internet Kartel crop top in the wild. Puffer jacket. Gold chain. City smoke. This is what moving different looks like.",
+    image: "/images/acf62aef-7e71-47fe-9d32.jpeg",
+    tags: ["Streetwear", "Culture"],
+  },
+  {
+    title: "The Command Center",
+    category: "Behind the Scenes",
+    description:
+      "Where the empire runs. Multi-screen setup. Real-time analytics. Brand monitoring. The Bombay command post.",
+    image: "/images/0fd273d7-809c-4567-8e85.jpeg",
+    tags: ["Operations", "Exclusive"],
+  },
+  {
+    title: "Bombay Hustle Chain",
+    category: "Jewelry",
+    description:
+      "The signature Bombay Hustle pendant. Skull with intertwined serpents. Diamond-encrusted crown. Handcrafted statement piece.",
+    image: "/images/e6fa4b8b-934a-446c-845f.jpeg",
+    tags: ["Jewelry", "Signature"],
+  },
+  {
+    title: "The Inner Circle",
+    category: "Archive",
+    description:
+      "Darkness. Chains. Flames. The original crew photo that started a movement. Loyalty over everything.",
+    image: "/images/ee6d2e42-b9ef-4824-ae11.jpeg",
+    tags: ["OG", "Archive"],
+  },
+]
+
+const categories = ["All", "Footwear", "Lookbook", "Behind the Scenes", "Jewelry", "Archive"]
+
+export function Vault() {
+  const [activeFilter, setActiveFilter] = useState("All")
+  const [selectedItem, setSelectedItem] = useState<(typeof vaultItems)[0] | null>(null)
+
+  const filtered =
+    activeFilter === "All"
+      ? vaultItems
+      : vaultItems.filter((item) => item.category === activeFilter)
+
+  return (
+    <div className="min-h-screen pb-24 pt-28 md:pt-32">
+      {/* Header */}
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="flex flex-col items-center gap-6 text-center">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-8 bg-kartel-gold" />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-kartel-gold">
+              Exclusive Access
+            </span>
+            <div className="h-px w-8 bg-kartel-gold" />
+          </div>
+          <h1 className="font-display text-4xl font-bold uppercase tracking-wider text-foreground md:text-6xl lg:text-7xl text-balance">
+            Cali_Bombay Vault
+          </h1>
+          <p className="max-w-lg text-lg text-muted-foreground">
+            The archive. Unreleased drops, behind-the-scenes moments, and pieces that built the empire.
+          </p>
+        </div>
+      </section>
+
+      {/* Filter tabs */}
+      <section className="mx-auto max-w-6xl px-6 pb-12">
+        <div className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-2 scrollbar-none md:mx-0 md:flex-wrap md:justify-center md:px-0">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveFilter(cat)}
+              className={`flex min-h-[44px] shrink-0 items-center px-5 py-2 font-display text-xs font-semibold uppercase tracking-[0.15em] transition-all ${
+                activeFilter === cat
+                  ? "border border-kartel-gold bg-kartel-gold/10 text-kartel-gold"
+                  : "border border-border bg-card text-muted-foreground hover:border-muted-foreground/30 hover:text-foreground"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Vault grid */}
+      <section className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((item) => (
+            <button
+              key={item.title}
+              type="button"
+              onClick={() => setSelectedItem(item)}
+              className="group relative flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:border-kartel-gold/40"
+            >
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={item.image || "/placeholder.svg"}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+
+                {/* Category badge */}
+                <span className="absolute left-3 top-3 bg-secondary/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-sm">
+                  {item.category}
+                </span>
+
+                {/* Hover overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-kartel-gold">
+                    View
+                  </span>
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="flex flex-col gap-2 p-5">
+                <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
+                  {item.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div className="flex flex-col items-center gap-4 py-24 text-center">
+            <span className="font-display text-lg font-bold uppercase tracking-wider text-muted-foreground/40">
+              No items in this category yet
+            </span>
+            <button
+              type="button"
+              onClick={() => setActiveFilter("All")}
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-kartel-gold transition-colors hover:text-kartel-gold/80"
+            >
+              View all
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* Lightbox modal */}
+      {selectedItem && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-background/95 backdrop-blur-md p-4"
+          onClick={() => setSelectedItem(null)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setSelectedItem(null)
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedItem.title}
+        >
+          <div
+            className="flex w-full max-w-3xl flex-col overflow-hidden border border-border bg-card"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={() => {}}
+            role="document"
+          >
+            {/* Close button */}
+            <div className="flex items-center justify-between border-b border-border px-5 py-3">
+              <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-kartel-gold">
+                {selectedItem.category}
+              </span>
+              <button
+                type="button"
+                onClick={() => setSelectedItem(null)}
+                className="flex h-11 w-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
+                aria-label="Close"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M2 2L14 14M14 2L2 14" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Image */}
+            <div className="relative aspect-video overflow-hidden">
+              <img
+                src={selectedItem.image || "/placeholder.svg"}
+                alt={selectedItem.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* Info */}
+            <div className="flex flex-col gap-3 p-6">
+              <h2 className="font-display text-xl font-bold uppercase tracking-wider text-foreground md:text-2xl">
+                {selectedItem.title}
+              </h2>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {selectedItem.description}
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                {selectedItem.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-border bg-secondary px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
