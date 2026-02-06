@@ -55,6 +55,16 @@ const products = [
     isPremium: true,
   },
   {
+    name: "Bombay Hustle - Street Hustle Essential",
+    category: "Eau De Parfum",
+    price: "$65",
+    image: "/images/bombay-hustle-fragrance.jpeg",
+    tagline: "Late-Night City Energy. Underground Hustle Culture.",
+    description: "The scent of power and ambition bottled. A luxury streetwear fragrance that merges graffiti-inspired aesthetics with premium perfumery. Dark gradient glass (black to red) symbolizes the relentless late-night grind. Cityscape artwork wraps the bottle, capturing urban authenticity and hustle mentality. Delivered in a signature Internet Kartel presentation box with white satin lining. This isn't just a scent—it's a lifestyle statement.",
+    isPremium: true,
+    isSoldOut: true,
+  },
+  {
     name: "IK Street Crop Top",
     category: "Internet Kartel",
     price: "$45",
@@ -188,6 +198,13 @@ export function Marketplace() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                {product.isSoldOut && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-sm">
+                    <span className="bg-destructive px-4 py-2 font-display text-sm font-bold uppercase tracking-[0.2em] text-destructive-foreground">
+                      Sold Out
+                    </span>
+                  </div>
+                )}
                 <span
                   className={`absolute left-3 top-3 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] backdrop-blur-sm ${
                     product.isPremium
