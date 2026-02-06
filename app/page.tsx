@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
@@ -10,9 +10,29 @@ import { Founder } from "@/components/founder"
 import { FinalCTA } from "@/components/final-cta"
 import { Footer } from "@/components/footer"
 import { Vault } from "@/components/vault"
+import { AgeGate } from "@/components/age-gate"
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("home")
+  const [isVerified, setIsVerified] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if user has already been verified
+    const verified = localStorage.getItem("ageVerified")
+    if (verified === "true") {
+      setIsVerified(true)
+    }
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return null
+  }
+
+  if (!isVerified) {
+    return <AgeGate onVerified={() => setIsVerified(true)} />
+  }
 
   return (
     <main className="min-h-screen">
