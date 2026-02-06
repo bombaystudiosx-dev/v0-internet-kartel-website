@@ -15,9 +15,9 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/ee6d2e42-b9ef-4824-ae11.jpeg"
+          src="/images/hero-green-jacket.jpeg"
           alt=""
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background" />
       </div>

@@ -18,7 +18,7 @@ const featuredProduct = {
     "Limited production, elite access only",
   ],
   images: [
-    "/images/marketplace-hero.jpeg",
+    "/images/ik-hoodie-portrait.jpeg",
     "/images/ik-hoodie-flatlay.jpeg",
     "/images/ik-hoodie-front.jpeg",
     "/images/ik-hoodie-back.jpeg",
