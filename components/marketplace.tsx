@@ -1,10 +1,32 @@
+"use client"
+
+import { useState } from "react"
+
+const featuredProduct = {
+  name: "The Original InternetKartel Hoodie",
+  category: "Elite Exclusive",
+  price: "$75",
+  fit: "Unisex",
+  tagline: "Precision-Embroidered Front. DGT-Printed Back. Built for Royalty.",
+  description:
+    "Crafted from heavyweight premium fleece, the Original InternetKartel Hoodie is the cornerstone of the empire. Front chest features meticulous raised embroidery of the full Internet Kartel insignia. The reverse unveils a commanding oversized IK monogram rendered in proprietary DGT print technology. This is not merchandise. This is armor.",
+  details: [
+    "Hand-finished embroidered front crest",
+    "Oversized IK DGT-printed back graphic",
+    "380 GSM heavyweight fleece construction",
+    "Unisex silhouette, true to size",
+    "Limited production, elite access only",
+  ],
+  images: [
+    "/images/ik-hoodie-portrait.jpeg",
+    "/images/ik-hoodie-flatlay.jpeg",
+    "/images/ik-hoodie-front.jpeg",
+    "/images/ik-hoodie-back.jpeg",
+    "/images/ik-hoodie-back-dark.jpeg",
+  ],
+}
+
 const products = [
-  {
-    name: "Bombay Hustle Pendant Tee",
-    category: "Bombay Hustle",
-    price: "$65",
-    image: "/images/e6fa4b8b-934a-446c-845f.jpeg",
-  },
   {
     name: "Internet Kartel AF1 - Purple Reign",
     category: "Internet Kartel",
@@ -26,6 +48,8 @@ const products = [
 ]
 
 export function Marketplace() {
+  const [activeImage, setActiveImage] = useState(0)
+
   return (
     <section id="marketplace" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
@@ -46,8 +70,92 @@ export function Marketplace() {
           </p>
         </div>
 
-        {/* Product grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Featured Product: The Original InternetKartel Hoodie */}
+        <div className="mb-16 border border-border bg-card">
+          <div className="flex flex-col lg:flex-row">
+            {/* Image gallery */}
+            <div className="flex flex-col lg:w-3/5">
+              <div className="relative aspect-[4/5] overflow-hidden sm:aspect-square lg:aspect-[4/5]">
+                <img
+                  src={featuredProduct.images[activeImage] || "/placeholder.svg"}
+                  alt={`${featuredProduct.name} - View ${activeImage + 1}`}
+                  className="h-full w-full object-cover transition-all duration-500"
+                />
+                <span className="absolute left-4 top-4 bg-primary px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground">
+                  {featuredProduct.category}
+                </span>
+              </div>
+              {/* Thumbnails */}
+              <div className="flex gap-1 overflow-x-auto p-2">
+                {featuredProduct.images.map((img, i) => (
+                  <button
+                    key={img}
+                    type="button"
+                    onClick={() => setActiveImage(i)}
+                    className={`relative min-h-[64px] min-w-[64px] flex-shrink-0 overflow-hidden transition-all ${
+                      activeImage === i
+                        ? "ring-2 ring-primary ring-offset-1 ring-offset-background"
+                        : "opacity-50 hover:opacity-80"
+                    }`}
+                  >
+                    <img
+                      src={img || "/placeholder.svg"}
+                      alt={`${featuredProduct.name} thumbnail ${i + 1}`}
+                      className="h-16 w-16 object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Product details */}
+            <div className="flex flex-col justify-center gap-6 p-6 lg:w-2/5 lg:p-10">
+              <div className="flex flex-col gap-2">
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+                  Signature Collection
+                </p>
+                <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-foreground md:text-3xl text-balance">
+                  {featuredProduct.name}
+                </h3>
+                <p className="text-sm italic text-muted-foreground">
+                  {featuredProduct.tagline}
+                </p>
+              </div>
+
+              <div className="flex items-baseline gap-3">
+                <span className="font-display text-3xl font-bold text-foreground">
+                  {featuredProduct.price}
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  {featuredProduct.fit}
+                </span>
+              </div>
+
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {featuredProduct.description}
+              </p>
+
+              <ul className="flex flex-col gap-2.5">
+                {featuredProduct.details.map((detail) => (
+                  <li key={detail} className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <span className="text-sm text-foreground">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                type="button"
+                className="mt-2 flex min-h-[48px] w-full items-center justify-center bg-primary px-8 font-display text-sm font-bold uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Coming Soon
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Remaining product grid */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <div
               key={product.name}
