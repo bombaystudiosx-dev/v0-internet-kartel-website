@@ -51,7 +51,7 @@ const products = [
     category: "Custom Limited Edition",
     price: "$300",
     image: "/images/30-days-jacket-box.jpeg",
-    images: ["/images/30-days-jacket-box.jpeg", "/images/30-days-jacket-front.png", "/images/30-days-jacket-back.png"],
+    images: ["/images/30-days-jacket-box.jpeg", "/images/30-days-jacket-front.png", "/images/30-days-jacket-back.png", "/images/30-days-jacket-back-detail.png"],
     tagline: "Eviction Notice: When You Were Really Living in the Trenches",
     description: "An ode to survival. A masterpiece born from struggle. This hand-crafted premium leather varsity jacket immortalizes the 30-day eviction notice—a symbol of resilience when you were really living in the trenches. Black and royal blue genuine leather construction with hand-embroidered gold lettering on the chest, featuring an artistically rendered eviction notice collage on the back. Each jacket tells a story of turning hardship into heritage. Presented in an exclusive Internet Kartel luxury box with tissue wrapping.",
     isPremium: true,
