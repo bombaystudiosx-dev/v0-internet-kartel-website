@@ -5,7 +5,7 @@ import { useState } from "react"
 const vaultItems = [
   {
     title: "Kartel Custom AF1s",
-    category: "Footwear",
+    category: "Merch",
     description:
       "Hand-painted Internet Kartel Air Force 1s. Purple Reign and Mexican Flag editions. One-of-one pieces built for the culture.",
     image: "/images/043e4302-8193-46a3-b31e.jpeg",
@@ -13,31 +13,15 @@ const vaultItems = [
   },
   {
     title: "Street Operations",
-    category: "Lookbook",
+    category: "Merch",
     description:
       "Internet Kartel crop top in the wild. Puffer jacket. Gold chain. City smoke. This is what moving different looks like.",
     image: "/images/acf62aef-7e71-47fe-9d32.jpeg",
     tags: ["Streetwear", "Culture"],
   },
   {
-    title: "The Command Center",
-    category: "Behind the Scenes",
-    description:
-      "Where the empire runs. Multi-screen setup. Real-time analytics. Brand monitoring. The Bombay command post.",
-    image: "/images/0fd273d7-809c-4567-8e85.jpeg",
-    tags: ["Operations", "Exclusive"],
-  },
-  {
-    title: "Bombay Hustle Chain",
-    category: "Jewelry",
-    description:
-      "The signature Bombay Hustle pendant. Skull with intertwined serpents. Diamond-encrusted crown. Handcrafted statement piece.",
-    image: "/images/e6fa4b8b-934a-446c-845f.jpeg",
-    tags: ["Jewelry", "Signature"],
-  },
-  {
     title: "The Inner Circle",
-    category: "Archive",
+    category: "Music",
     description:
       "Darkness. Chains. Flames. The original crew photo that started a movement. Loyalty over everything.",
     image: "/images/ee6d2e42-b9ef-4824-ae11.jpeg",
@@ -45,7 +29,7 @@ const vaultItems = [
   },
 ]
 
-const categories = ["All", "Footwear", "Lookbook", "Behind the Scenes", "Jewelry", "Archive"]
+const categories = ["All", "Music", "Merch"]
 
 export function Vault() {
   const [activeFilter, setActiveFilter] = useState("All")
