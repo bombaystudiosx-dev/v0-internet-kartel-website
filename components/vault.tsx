@@ -9,6 +9,7 @@ const vaultItems: {
   image: string
   tags: string[]
   downloadUrl?: string
+  comingSoon?: boolean
 }[] = [
   {
     title: "Street Operations",
@@ -17,6 +18,7 @@ const vaultItems: {
       "Hand-painted Internet Kartel Air Force 1s. Purple Reign and Mexican Flag editions. One-of-one pieces built for the culture.",
     image: "/images/street-operations-trunk.png",
     tags: ["Limited", "Custom", "1 of 1"],
+    comingSoon: true,
   },
 
   {
@@ -26,6 +28,7 @@ const vaultItems: {
       "Darkness. Chains. Flames. The original crew photo that started a movement. Loyalty over everything.",
     image: "/images/dope-sellers.jpeg",
     tags: ["OG", "Archive"],
+    comingSoon: true,
   },
   {
     title: "This Is How I Unfuck Myself",
@@ -178,6 +181,11 @@ export function Vault() {
                   <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
                     {item.title}
                   </h3>
+                  {item.comingSoon && (
+                    <span className="font-display text-2xl font-black uppercase tracking-wider text-yellow-400">
+                      Coming Soon
+                    </span>
+                  )}
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
