@@ -1,3 +1,10 @@
+import { dirname, resolve } from "node:path"
+import { fileURLToPath } from "node:url"
+import { realpathSync } from "node:fs"
+
+const __filename = realpathSync(fileURLToPath(import.meta.url))
+const __dirname = dirname(__filename)
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -7,7 +14,7 @@ const nextConfig = {
     unoptimized: true,
   },
   turbopack: {
-    root: "/vercel/share/v0-next-shadcn",
+    root: resolve(__dirname),
   },
 }
 
