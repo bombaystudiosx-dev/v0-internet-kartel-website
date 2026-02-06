@@ -18,6 +18,7 @@ const featuredProduct = {
     "Limited production, elite access only",
   ],
   images: [
+    "/images/services-bg.png",
     "/images/ik-hoodie-portrait.jpeg",
     "/images/ik-hoodie-flatlay.jpeg",
     "/images/ik-hoodie-front.jpeg",
