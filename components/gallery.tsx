@@ -116,30 +116,97 @@ export function Gallery() {
               </p>
             </div>
 
-            {/* Empty State */}
-            <div className="flex min-h-[400px] items-center justify-center rounded-none border border-border bg-secondary/20 p-12">
-              <div className="text-center">
-                <div className="mb-6 flex justify-center">
-                  <svg
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    className="text-muted-foreground"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
+            {/* Description */}
+            <div className="mb-12 rounded-none border border-border bg-secondary/10 p-6 md:p-8">
+              <p className="text-center text-sm leading-relaxed text-foreground md:text-base">
+                100% authentic design, designs creations, and intellectual properties owned
+                rightfully by Internet Kartel. If you would like to own one of these
+                designs or would like a custom, please submit your information for
+                consulting.
+              </p>
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    // Scroll to the contact/final CTA section
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                    // Switch to home tab to access contact
+                    const homeTab = document.querySelector('[data-tab="home"]') as HTMLButtonElement
+                    if (homeTab) homeTab.click()
+                  }}
+                  className="flex min-h-[48px] items-center justify-center border border-primary bg-primary/10 px-8 font-display text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+                >
+                  Request Consultation
+                </button>
+              </div>
+            </div>
+
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {/* Image 1 - IK Map Design */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/ik-map-design.jpeg"
+                    alt="IK Map Design - Street layout with Internet Kartel branding"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <p className="font-display text-sm uppercase tracking-[0.2em] text-muted-foreground">
-                  Coming Soon
-                </p>
-                <p className="mt-2 text-xs text-muted-foreground/70">
-                  Work will be showcased here
-                </p>
+              </div>
+
+              {/* Image 2 - Hunna Dolla Sips */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/hunna-dolla-sips.jpeg"
+                    alt="Hunna Dolla Sips - Creative beverage can design"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 3 - Lucky Licks */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/luckylicks.jpeg"
+                    alt="Lucky Licks - Surreal ice cream design"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 4 - Bombay Hustle */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/bombay-hustle.jpeg"
+                    alt="Bombay Hustle Company - Dice logo design"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 5 - IK Neon Logo */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/ik-neon-logo.jpeg"
+                    alt="Internet Kartel Neon Logo - Brand identity"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Image 6 - Stop Snitching */}
+              <div className="group relative overflow-hidden rounded-none border border-border bg-secondary/20 transition-all hover:border-primary/50">
+                <div className="aspect-square">
+                  <img
+                    src="/images/gallery/stop-snitching.jpeg"
+                    alt="Stop Snitching - Las Vegas Police design"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               </div>
             </div>
           </div>
