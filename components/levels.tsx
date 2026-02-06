@@ -52,7 +52,17 @@ export function Levels() {
   } | null>(null)
 
   return (
-    <section id="levels" className="relative py-24 md:py-32">
+    <section id="levels" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src="/images/services-bg.png"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/85" />
+      </div>
+
       <div className="mx-auto max-w-6xl px-6">
         {/* Section header */}
         <div className="mb-16 flex flex-col items-center gap-4 text-center">
