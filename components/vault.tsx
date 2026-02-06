@@ -2,7 +2,14 @@
 
 import { useState } from "react"
 
-const vaultItems = [
+const vaultItems: {
+  title: string
+  category: string
+  description: string
+  image: string
+  tags: string[]
+  downloadUrl?: string
+}[] = [
   {
     title: "Street Operations",
     category: "Merch",
@@ -20,9 +27,18 @@ const vaultItems = [
     image: "/images/dope-sellers.jpeg",
     tags: ["OG", "Archive"],
   },
+  {
+    title: "This Is How I Unfuck Myself",
+    category: "Free E-Book",
+    description:
+      "Written by Cali_Bombay. Voted best book of the summer. Sold over 1,000 ebooks first week of release. A book every young entrepreneur should read.",
+    image: "/images/ebook-cover.jpeg",
+    tags: ["Free", "Best Seller", "Entrepreneurship"],
+    downloadUrl: "https://drive.google.com/file/d/11CWowbJVyVUCJjTrGthn26s2fp9lztAK/view?usp=drivesdk",
+  },
 ]
 
-const categories = ["All", "Music", "Merch"]
+const categories = ["All", "Music", "Merch", "Free E-Book"]
 
 export function Vault() {
   const [activeFilter, setActiveFilter] = useState("All")
@@ -77,53 +93,105 @@ export function Vault() {
       {/* Vault grid */}
       <section className="mx-auto max-w-6xl px-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => (
-            <button
-              key={item.title}
-              type="button"
-              onClick={() => setSelectedItem(item)}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:border-kartel-gold/40"
-            >
-              {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+          {filtered.map((item) =>
+            item.downloadUrl ? (
+              <a
+                key={item.title}
+                href={item.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:border-kartel-gold/40"
+              >
+                {/* Image */}
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
 
-                {/* Category badge */}
-                <span className="absolute left-3 top-3 bg-secondary/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-sm">
-                  {item.category}
-                </span>
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-kartel-gold">
-                    View
+                  {/* Category badge */}
+                  <span className="absolute left-3 top-3 bg-kartel-gold/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-background backdrop-blur-sm">
+                    {item.category}
                   </span>
-                </div>
-              </div>
 
-              {/* Info */}
-              <div className="flex flex-col gap-2 p-5">
-                <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
-                  {item.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60"
-                    >
-                      {tag}
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-kartel-gold">
+                      Click to Download
                     </span>
-                  ))}
+                  </div>
                 </div>
-              </div>
-            </button>
-          ))}
+
+                {/* Info */}
+                <div className="flex flex-col gap-2 p-5">
+                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
+                    {item.title}
+                  </h3>
+                  <span className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-kartel-gold">
+                    Free Download
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ) : (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => setSelectedItem(item)}
+                className="group relative flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:border-kartel-gold/40"
+              >
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+
+                  {/* Category badge */}
+                  <span className="absolute left-3 top-3 bg-secondary/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur-sm">
+                    {item.category}
+                  </span>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-kartel-gold">
+                      View
+                    </span>
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div className="flex flex-col gap-2 p-5">
+                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
+                    {item.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </button>
+            )
+          )}
         </div>
 
         {filtered.length === 0 && (
