@@ -62,7 +62,6 @@ const products = [
     tagline: "Late-Night City Energy. Underground Hustle Culture.",
     description: "The scent of power and ambition bottled. A luxury streetwear fragrance that merges graffiti-inspired aesthetics with premium perfumery. Dark gradient glass (black to red) symbolizes the relentless late-night grind. Cityscape artwork wraps the bottle, capturing urban authenticity and hustle mentality. Delivered in a signature Internet Kartel presentation box with white satin lining. This isn't just a scent—it's a lifestyle statement.",
     isPremium: true,
-    isSoldOut: true,
   },
   {
     name: "IK Street Crop Top",
