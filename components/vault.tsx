@@ -10,6 +10,9 @@ const vaultItems: {
   tags: string[]
   downloadUrl?: string
   comingSoon?: boolean
+  originalPrice?: string
+  salePrice?: string
+  credits?: string
 }[] = [
   {
     title: "Street Operations",
@@ -39,9 +42,20 @@ const vaultItems: {
     tags: ["Free", "Best Seller", "Entrepreneurship"],
     downloadUrl: "https://drive.google.com/file/d/11CWowbJVyVUCJjTrGthn26s2fp9lztAK/view?usp=drivesdk",
   },
+  {
+    title: "Kartel Developer",
+    category: "Apps",
+    description:
+      "Your one-stop shop for building websites, apps, and everything digital\u2014all under one umbrella. The Kartel Developer gives you the tools to build, launch, and scale your vision with 20,000 credits to get started.",
+    image: "/images/kartel-developer-app.png",
+    tags: ["App Builder", "Websites", "One-Stop Shop"],
+    originalPrice: "$100",
+    salePrice: "$50",
+    credits: "+20,000 credits to build on",
+  },
 ]
 
-const categories = ["All", "Music", "Merch", "Free E-Book"]
+const categories = ["All", "Music", "Merch", "Free E-Book", "Apps"]
 
 export function Vault() {
   const [activeFilter, setActiveFilter] = useState("All")
@@ -97,7 +111,65 @@ export function Vault() {
       <section className="mx-auto max-w-6xl px-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item) =>
-            item.downloadUrl ? (
+            item.salePrice ? (
+              <div
+                key={item.title}
+                className="group relative flex flex-col overflow-hidden border border-border bg-card text-left transition-all hover:border-kartel-gold/40"
+              >
+                {/* Image */}
+                <div className="relative aspect-square overflow-hidden">
+                  <img
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+
+                  {/* Category badge */}
+                  <span className="absolute left-3 top-3 bg-kartel-gold/90 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-background backdrop-blur-sm">
+                    {item.category}
+                  </span>
+                </div>
+
+                {/* Info */}
+                <div className="flex flex-col gap-3 p-5">
+                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                  {/* Pricing */}
+                  <div className="flex items-center gap-3">
+                    <span className="font-display text-lg font-bold text-muted-foreground line-through decoration-red-500 decoration-2">
+                      {item.originalPrice}
+                    </span>
+                    <span className="font-display text-2xl font-black text-foreground">
+                      {item.salePrice}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-yellow-400">
+                      First Month
+                    </span>
+                  </div>
+                  {/* Credits */}
+                  {item.credits && (
+                    <span className="font-display text-sm font-bold uppercase tracking-wider text-[#39ff14]">
+                      {item.credits}
+                    </span>
+                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : item.downloadUrl ? (
               <a
                 key={item.title}
                 href={item.downloadUrl}
