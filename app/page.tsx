@@ -14,6 +14,7 @@ import { AgeGate } from "@/components/age-gate"
 const Levels = lazy(() => import("@/components/levels").then(m => ({ default: m.Levels })))
 const Gallery = lazy(() => import("@/components/gallery").then(m => ({ default: m.Gallery })))
 const Vault = lazy(() => import("@/components/vault").then(m => ({ default: m.Vault })))
+const KartelDeveloper = lazy(() => import("@/components/kartel-developer").then(m => ({ default: m.KartelDeveloper })))
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("home")
@@ -75,11 +76,15 @@ export default function Page() {
         <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
           <Gallery />
         </Suspense>
-      ) : (
+      ) : activeTab === "vault" ? (
         <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
           <Vault />
         </Suspense>
-      )}
+      ) : activeTab === "kartel-developer" ? (
+        <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" /></div>}>
+          <KartelDeveloper />
+        </Suspense>
+      ) : null}
 
       <Footer />
     </main>

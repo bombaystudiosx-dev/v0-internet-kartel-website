@@ -7,6 +7,7 @@ const tabs = [
   { label: "Services", id: "services" },
   { label: "Gallery", id: "gallery" },
   { label: "Cali_Bombay Vault", id: "vault" },
+  { label: "Kartel Developer", id: "kartel-developer" },
 ]
 
 const homeLinks = [
