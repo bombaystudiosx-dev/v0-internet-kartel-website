@@ -2,10 +2,11 @@
 
 import React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox"
 import Image from "next/image"
 
 interface AgeGateProps {
@@ -16,6 +17,19 @@ export function AgeGate({ onVerified }: AgeGateProps) {
   const [email, setEmail] = useState("")
   const [birthday, setBirthday] = useState("")
   const [error, setError] = useState("")
+  const [rememberMe, setRememberMe] = useState(false)
+
+  useEffect(() => {
+    try {
+      const savedBirthday = localStorage.getItem("savedBirthday")
+      if (savedBirthday) {
+        setBirthday(savedBirthday)
+        setRememberMe(true)
+      }
+    } catch {
+      // localStorage not available
+    }
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -52,6 +66,11 @@ export function AgeGate({ onVerified }: AgeGateProps) {
     // Store verification in localStorage
     try {
       localStorage.setItem("ageVerified", "true")
+      if (rememberMe) {
+        localStorage.setItem("savedBirthday", birthday)
+      } else {
+        localStorage.removeItem("savedBirthday")
+      }
     } catch (error) {
       console.error("Failed to save age verification:", error)
     }
@@ -126,6 +145,18 @@ export function AgeGate({ onVerified }: AgeGateProps) {
                   required
                 />
               </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Checkbox
+                id="rememberMe"
+                checked={rememberMe}
+                onCheckedChange={(checked) => setRememberMe(checked === true)}
+                className="border-white/40 data-[state=checked]:bg-[#10B981] data-[state=checked]:border-[#10B981]"
+              />
+              <Label htmlFor="rememberMe" className="text-sm font-medium text-white/80 cursor-pointer">
+                Remember Me
+              </Label>
             </div>
 
             {error && (
