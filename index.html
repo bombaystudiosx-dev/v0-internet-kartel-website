@@ -5,6 +5,16 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internet Kartel</title>
+<meta name="description" content="A private network for those who move the market before it moves. Invite only.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='bold' fill='%23baff2c' text-anchor='middle'%3EIK%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Internet Kartel">
+<meta property="og:description" content="A private network for those who move the market before it moves. Invite only.">
+<meta property="og:url" content="https://v0-internet-kartel-website.vercel.app/">
+<meta property="og:image" content="https://v0-internet-kartel-website.vercel.app/assets/ik-circle-rooftop.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -96,14 +106,14 @@
         </div>
       </div>
     </sc-for>
-    <a href="circle.html" style="display:block; margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#efece4; text-decoration:none; border-top:1px solid rgba(239,236,228,0.1); padding-top:20px;">ENTER THE CIRCLE →</a>
+    <a href="/circle" style="display:block; margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#efece4; text-decoration:none; border-top:1px solid rgba(239,236,228,0.1); padding-top:20px;">ENTER THE CIRCLE →</a>
   </div>
 
 
 
   <!-- SHOP NOW -->
   <div style="padding:64px 28px 24px; border-top:1px solid rgba(239,236,228,0.08); text-align:center;">
-    <a href="shop.html" style="display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; box-sizing:border-box; padding:16px 34px; border:1px solid #efece4; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#efece4; cursor:pointer; text-decoration:none; transition:background 0.25s ease, color 0.25s ease;" style-hover="background:#efece4; color:#050505;">
+    <a href="/shop" style="display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; box-sizing:border-box; padding:16px 34px; border:1px solid #efece4; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#efece4; cursor:pointer; text-decoration:none; transition:background 0.25s ease, color 0.25s ease;" style-hover="background:#efece4; color:#050505;">
       SHOP NOW
     </a>
   </div>
@@ -139,11 +149,11 @@ class Component extends DCLogic {
       toggleMenu: this.toggleMenu,
       year: new Date().getFullYear(),
       menuItems: [
-        { label: 'Index', href: 'directory.html' },
-        { label: 'Circle', href: 'circle.html' },
-        { label: 'Shop', href: 'shop.html' },
-        { label: 'Access', href: 'access.html' },
-        { label: 'Contact', href: 'contact.html' },
+        { label: 'Index', href: '/directory' },
+        { label: 'Circle', href: '/circle' },
+        { label: 'Shop', href: '/shop' },
+        { label: 'Access', href: '/access' },
+        { label: 'Contact', href: '/contact' },
       ],
       pillars: [
         { n: '01', title: 'Signal', desc: 'Curated intelligence before it surfaces publicly.' },

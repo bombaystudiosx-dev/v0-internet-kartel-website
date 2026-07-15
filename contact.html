@@ -5,6 +5,16 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Internet Kartel</title>
+<meta name="description" content="Say what you need. Nothing more.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050505'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='bold' fill='%23baff2c' text-anchor='middle'%3EIK%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Internet Kartel">
+<meta property="og:description" content="Say what you need. Nothing more.">
+<meta property="og:url" content="https://v0-internet-kartel-website.vercel.app/contact">
+<meta property="og:image" content="https://v0-internet-kartel-website.vercel.app/assets/ik-circle-rooftop.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -21,8 +31,8 @@
 
   <!-- NAV -->
   <div style="display:flex; align-items:center; justify-content:space-between; padding:22px;">
-    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
-    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
+    <a href="/" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
+    <a href="/" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
   </div>
 
   <!-- HEADER -->
@@ -90,6 +100,9 @@ class Component extends DCLogic {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const subject = encodeURIComponent('Message from ' + (this.state.formEmail || 'the site'));
+    const body = encodeURIComponent(this.state.formMessage + '\n\n— ' + this.state.formEmail);
+    window.location.href = 'mailto:contact@internetkartel.com?subject=' + subject + '&body=' + body;
     this.setState({ sent: true });
   };
 
