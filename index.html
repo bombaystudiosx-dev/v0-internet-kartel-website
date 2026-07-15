@@ -16,6 +16,26 @@
 <meta property="og:image" content="https://v0-internet-kartel-website.vercel.app/assets/ik-circle-rooftop.png">
 <meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
+<script>
+// The hero video is rendered by the DC runtime, which sets `muted` as a JS
+// property only — some browsers then refuse autoplay. Nudge it until it plays.
+(function () {
+  var tries = 0;
+  var t = setInterval(function () {
+    var vids = document.querySelectorAll('video');
+    var allPlaying = vids.length > 0;
+    vids.forEach(function (v) {
+      if (v.paused) {
+        allPlaying = false;
+        v.muted = true;
+        v.setAttribute('muted', '');
+        v.play().catch(function () {});
+      }
+    });
+    if (allPlaying || ++tries > 20) clearInterval(t);
+  }, 500);
+})();
+</script>
 </head>
 <body>
 <x-dc>
