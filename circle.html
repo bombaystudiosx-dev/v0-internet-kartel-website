@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    body { margin: 0; background: #050505; }
+    ::selection { background: #baff2c; color: #050505; }
+  </style>
+</helmet>
+
+<div style="width:100%; max-width:480px; margin:0 auto; background:#050505; color:#efece4; font-family:'Manrope',sans-serif; min-height:100vh; box-sizing:border-box;">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px;">
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
+  </div>
+
+  <!-- IMAGE -->
+  <div>
+    <img src="assets/ik-circle-rooftop.png" alt="The Circle" style="width:100%; display:block; filter:contrast(1.05) brightness(0.92);" />
+  </div>
+
+  <!-- HEADER -->
+  <div style="padding:32px 28px 8px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6b6b66; margin-bottom:16px;">THE CIRCLE</div>
+    <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:32px; color:#efece4; line-height:1.2;">
+      Those who know, know.
+    </div>
+  </div>
+
+  <!-- CODES -->
+  <div style="padding:28px 28px 8px;">
+    <div style="border:1px solid rgba(239,236,228,0.15); padding:24px 22px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; color:#efece4;">CODE: IK—Ø—VII</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.05em; color:#8f8c85; line-height:2.1; margin-top:16px;">
+        Ø&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;the unspoken<br />
+        VII&nbsp;=&nbsp;the seven who know<br />
+        IK&nbsp;&nbsp;=&nbsp;&nbsp;internet kartel
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#e0343f; margin-top:20px; padding-top:16px; border-top:1px solid rgba(239,236,228,0.1);">
+        ONLY THE WISE DECODE THE REST.
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:8px 28px 8px;">
+    <sc-for list="{{ codes }}" as="c" hint-placeholder-count="4">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; padding:20px 0; border-top:1px solid rgba(239,236,228,0.1);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#baff2c; letter-spacing:0.08em;">{{ c.code }}</div>
+        <div style="font-family:'Manrope',sans-serif; font-size:12px; color:#5c5a54; text-align:right; max-width:200px;">{{ c.hint }}</div>
+      </div>
+    </sc-for>
+    <div style="border-top:1px solid rgba(239,236,228,0.1);"></div>
+  </div>
+
+  <!-- CLOSING LINE -->
+  <div style="padding:40px 28px 64px;">
+    <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; color:#efece4; line-height:1.4; text-align:center;">
+      Higher up, have it all.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding:32px 28px 40px; border-top:1px solid rgba(239,236,228,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">© {{ year }} I.K.</div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">INVITE ONLY</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      year: new Date().getFullYear(),
+      codes: [
+        { code: 'IK-Δ-01', hint: 'first ring, unnamed' },
+        { code: '∞/7K', hint: 'infinite knowledge' },
+        { code: '⚜︎-VI', hint: 'the sixth seat' },
+        { code: 'IK-666', hint: 'the count that never grows' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

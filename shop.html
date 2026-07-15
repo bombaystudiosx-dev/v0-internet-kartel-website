@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    body { margin: 0; background: #050505; }
+    ::selection { background: #baff2c; color: #050505; }
+  </style>
+</helmet>
+
+<div style="width:100%; max-width:480px; margin:0 auto; background:#050505; color:#efece4; font-family:'Manrope',sans-serif; min-height:100vh; box-sizing:border-box;">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px;">
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
+  </div>
+
+  <!-- HEADER -->
+  <div style="padding:12px 28px 40px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6b6b66; margin-bottom:16px;">THE SHOP</div>
+    <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:34px; color:#efece4; line-height:1.2;">
+      Wear the mark.<br />Carry the weight.
+    </div>
+  </div>
+
+  <!-- PRODUCT -->
+  <div style="padding:0 28px 64px;">
+    <div style="border:1px solid rgba(239,236,228,0.15);">
+      <img src="assets/ik-hoodie-flatlay.jpeg" alt="Internet Kartel hoodie" style="width:100%; display:block; aspect-ratio:1.5/1; object-fit:cover; filter:contrast(1.05) brightness(0.95);" />
+      <div style="padding:22px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; color:#efece4;">Syndicate Hoodie</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:15px; color:#efece4;">$65.00</div>
+        </div>
+        <div style="font-family:'Manrope',sans-serif; font-size:13px; color:#8f8c85; margin-top:8px; line-height:1.6;">
+          Heavyweight fleece. Embroidered crest, front and back.
+        </div>
+        <div onClick="{{ addToCart }}" style="display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; box-sizing:border-box; margin-top:20px; padding:15px 0; border:1px solid #efece4; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#efece4; cursor:pointer; transition:background 0.25s ease, color 0.25s ease;" style-hover="background:#efece4; color:#050505;">
+          {{ cartLabel }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding:32px 28px 40px; border-top:1px solid rgba(239,236,228,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">© {{ year }} I.K.</div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">INVITE ONLY</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { inCart: false };
+
+  addToCart = () => {
+    this.setState({ inCart: true });
+  };
+
+  renderVals() {
+    return {
+      addToCart: this.addToCart,
+      cartLabel: this.state.inCart ? 'ADDED' : 'ADD TO CART',
+      year: new Date().getFullYear(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

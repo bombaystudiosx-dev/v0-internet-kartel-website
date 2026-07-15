@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    body { margin: 0; background: #050505; }
+    ::selection { background: #baff2c; color: #050505; }
+  </style>
+</helmet>
+
+<div style="width:100%; max-width:480px; margin:0 auto; background:#050505; color:#efece4; font-family:'Manrope',sans-serif; min-height:100vh; box-sizing:border-box;">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px;">
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
+  </div>
+
+  <!-- HEADER -->
+  <div style="padding:12px 28px 40px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6b6b66; margin-bottom:16px;">CONTACT</div>
+    <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:34px; color:#efece4; line-height:1.2;">
+      Say what you need.<br />Nothing more.
+    </div>
+  </div>
+
+  <!-- CHANNELS -->
+  <div style="padding:0 28px 40px; display:flex; flex-direction:column; gap:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-top:1px solid rgba(239,236,228,0.1);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#6b6b66;">GENERAL</div>
+      <a href="mailto:contact@internetkartel.com" style="font-family:'Manrope',sans-serif; font-size:14px; color:#efece4; text-decoration:none;">contact@internetkartel.com</a>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-top:1px solid rgba(239,236,228,0.1); border-bottom:1px solid rgba(239,236,228,0.1);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#6b6b66;">PRESS</div>
+      <a href="mailto:press@internetkartel.com" style="font-family:'Manrope',sans-serif; font-size:14px; color:#efece4; text-decoration:none;">press@internetkartel.com</a>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div style="padding:0 28px 64px;">
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px solid rgba(239,236,228,0.2); padding:28px 22px; text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#baff2c;">MESSAGE RECEIVED</div>
+        <div style="font-family:'Manrope',sans-serif; font-size:13.5px; color:#8f8c85; margin-top:10px;">We read everything.</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ handleSubmit }}" style="display:flex; flex-direction:column; gap:18px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#6b6b66;">EMAIL</label>
+          <input type="email" required="{{ true }}" value="{{ formEmail }}" onChange="{{ setEmail }}" style="background:transparent; border:none; border-bottom:1px solid rgba(239,236,228,0.25); color:#efece4; font-family:'Manrope',sans-serif; font-size:15px; padding:10px 0; outline:none;" />
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <label style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#6b6b66;">MESSAGE</label>
+          <textarea rows="4" value="{{ formMessage }}" onChange="{{ setMessage }}" style="background:transparent; border:none; border-bottom:1px solid rgba(239,236,228,0.25); color:#efece4; font-family:'Manrope',sans-serif; font-size:15px; padding:10px 0; outline:none; resize:none;"></textarea>
+        </div>
+        <button type="submit" style="margin-top:12px; padding:16px 34px; border:1px solid #efece4; background:transparent; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; color:#efece4; cursor:pointer; transition:background 0.25s ease, color 0.25s ease;" style-hover="background:#efece4; color:#050505;">
+          SEND
+        </button>
+      </form>
+    </sc-if>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding:32px 28px 40px; border-top:1px solid rgba(239,236,228,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">© {{ year }} I.K.</div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">INVITE ONLY</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    sent: false,
+    formEmail: '',
+    formMessage: '',
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ sent: true });
+  };
+
+  setEmail = (e) => this.setState({ formEmail: e.target.value });
+  setMessage = (e) => this.setState({ formMessage: e.target.value });
+
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      formEmail: this.state.formEmail,
+      formMessage: this.state.formMessage,
+      setEmail: this.setEmail,
+      setMessage: this.setMessage,
+      handleSubmit: this.handleSubmit,
+      year: new Date().getFullYear(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

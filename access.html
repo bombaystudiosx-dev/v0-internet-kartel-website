@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    body { margin: 0; background: #050505; }
+    ::selection { background: #baff2c; color: #050505; }
+  </style>
+</helmet>
+
+<div style="width:100%; max-width:480px; margin:0 auto; background:#050505; color:#efece4; font-family:'Manrope',sans-serif; min-height:100vh; box-sizing:border-box;">
+
+  <!-- NAV -->
+  <div style="display:flex; align-items:center; justify-content:space-between; padding:22px;">
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; color:#efece4; text-decoration:none;">I.K.</a>
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#8f8c85; text-decoration:none;">← BACK</a>
+  </div>
+
+  <!-- HEADER -->
+  <div style="padding:12px 28px 32px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6b6b66; margin-bottom:16px;">ACCESS</div>
+    <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:34px; color:#efece4; line-height:1.2;">
+      Get in before it's public.
+    </div>
+    <div style="font-family:'Manrope',sans-serif; font-size:14px; line-height:1.6; color:#a9a69e; margin-top:18px; max-width:340px;">
+      Private allocations, closed group chats, and alpha that never touches a timeline. 100 seats. No more.
+    </div>
+  </div>
+
+  <!-- MEMBERSHIP CARD -->
+  <div style="padding:0 28px 40px;">
+    <div style="border:1px solid rgba(239,236,228,0.15);">
+      <img src="assets/ik-membership-card.png" alt="Internet Kartel 18K membership card" style="width:100%; display:block;" />
+      <div style="padding:28px 24px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#6b6b66;">MEMBERSHIP</div>
+        <div style="display:flex; align-items:baseline; gap:8px; margin-top:14px;">
+          <div style="font-family:'Instrument Serif',serif; font-size:48px; color:#efece4;">$100</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8f8c85;">/ year</div>
+        </div>
+        <div style="font-family:'Manrope',sans-serif; font-size:13.5px; color:#8f8c85; margin-top:14px; line-height:1.7;">
+          One tier. One price. Full standing in the Circle, renewed annually.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <div style="padding:0 28px 64px;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6b6b66; margin-bottom:24px;">WHAT YOU GET</div>
+    <div style="font-family:'Manrope',sans-serif; font-size:13.5px; color:#8f8c85; line-height:1.7; margin-bottom:32px;">
+      This isn't a newsletter. It's a room. Everything below moves before it's a headline.
+    </div>
+    <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+      <div style="display:flex; align-items:baseline; gap:18px; padding:24px 0; border-top:1px solid rgba(239,236,228,0.1);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#baff2c; min-width:24px;">{{ b.n }}</div>
+        <div>
+          <div style="font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; color:#efece4;">{{ b.title }}</div>
+          <div style="font-family:'Manrope',sans-serif; font-size:13.5px; color:#8f8c85; margin-top:6px; line-height:1.6;">{{ b.desc }}</div>
+        </div>
+      </div>
+    </sc-for>
+    <div style="border-top:1px solid rgba(239,236,228,0.1);"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding:32px 28px 40px; border-top:1px solid rgba(239,236,228,0.08); display:flex; justify-content:space-between; align-items:center;">
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">© {{ year }} I.K.</div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; color:#5c5a54;">INVITE ONLY</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      year: new Date().getFullYear(),
+      benefits: [
+        { n: '01', title: 'Private Allocations', desc: 'First-look and guaranteed allocation on airdrops and raises before they open to the public.' },
+        { n: '02', title: 'The Group Chats', desc: 'Invite-only rooms with the people actually moving the market — no bots, no farmers, no noise.' },
+        { n: '03', title: 'Alpha Feed', desc: 'Real-time calls on what to watch, ape, or avoid, hours before it hits your timeline.' },
+        { n: '04', title: 'Direct Line', desc: 'Access to founders, insiders, and each other — questions answered, doors opened.' },
+        { n: '05', title: 'Standing', desc: 'A verified seat in the Circle, carried not advertised. 100 members. No waitlist tier.' },
+        { n: '06', title: 'The Card', desc: 'An 18K numbered membership card, shipped on acceptance — proof you were let in.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
